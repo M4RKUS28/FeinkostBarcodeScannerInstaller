@@ -125,8 +125,8 @@ fi
 
 # Autostart:
 echo "Aktiviere Autostart..."
-[ -d "/home/${SUDO_USER}/.config/autostart/" ] || mkdir "/home/${SUDO_USER}/.config/autostart/" || exit
-
+[ -d "/home/${SUDO_USER}/.config/autostart/" ] || sudo mkdir -p "/home/${SUDO_USER}/.config/autostart/"
+ 
 if echo "[Desktop Entry]
 Name=FeinkostBarcodeScanner
 Type=Application
