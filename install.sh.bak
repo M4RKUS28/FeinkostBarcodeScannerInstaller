@@ -34,7 +34,7 @@ echo "Kopiere die Constants-Datei (/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/
 if cp "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py-template.txt" "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py"; then
    echo "Öffne die Starteinstellungsdatei für Änderungen..."
    for ((i=6; i>=0; i--)); do echo -ne "\rÖffnen in $i Sekunden"; sleep 1; done
-   echo -e "\r                              \n\n"
+   echo -e "r                              \n\n"
    nano "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py"
 else
   echo "    -> FAILED --> EXIT()"
@@ -42,9 +42,7 @@ else
 fi
 
 read -r -p "[Enter] zum Fortfahren"
-for ((i=6; i>=0; i--)); do echo -ne "\rFahre mit dem Installieren der Abhängigkeiten in $i Sekunden fort"; sleep 1; done
-echo -e "\r                                                 \n\n"
-   
+
 echo "Installiere die Abhängigkeiten..."
 
 # Abhängigkeiten Installation:
