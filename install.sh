@@ -13,7 +13,7 @@ echo -e "\r                               \n\n"
 
 if [ -d "/home/$SUDO_USER/Barcode-Scanner-Feinkost-" ]; then
   echo -e "Es existiert bereits der Ordner '/home/${SUDO_USER}/Barcode-Scanner-Feinkost-' -> Bereits installiert? \n->Abbruch"
-  # exit
+  exit
 fi
 
 echo "Wechsle das Verzeichnis zu: '/home/${SUDO_USER}/'..."
@@ -24,8 +24,10 @@ if git clone "https://github.com/Benefranko/Barcode-Scanner-Feinkost-.git"; then
     echo -e "    -> OK\n"
 else
     echo "    -> FAILED --> EXIT()"
-    # exit
+    exit
 fi
+
+sudo chmod 777 -R /home/${SUDO_USER}/Barcode-Scanner-Feinkost-/
 
 echo "Kopiere die Constants-Datei (/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py-template.txt --> /home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py)..."
 
