@@ -27,7 +27,8 @@ else
     exit
 fi
 
-sudo chmod 777 -R /home/${SUDO_USER}/Barcode-Scanner-Feinkost-/
+sudo chmod 777 -R "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
+sudo chmod -R ugo+rwx "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
 
 echo "Kopiere die Constants-Datei (/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py-template.txt --> /home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py)..."
 
@@ -41,7 +42,6 @@ else
   exit
 fi
 
-read -r -p "[Enter] zum Fortfahren"
 for ((i=6; i>=0; i--)); do echo -ne "\rFahre mit dem Installieren der Abhängigkeiten in $i Sekunden fort"; sleep 1; done
 echo -e "\r                                                 \n\n"
    
@@ -133,7 +133,7 @@ Type=Application
 Exec=/usr/bin/python /home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/main.py
 Terminal=false" | tee "/home/${SUDO_USER}/.config/autostart/FeinkostBarcodeScanner.desktop"
 then
-  echo -e "    -> OK\n"
+	echo -e "    -> OK\n"
 else
     echo "    -> FAILED --> EXIT()"
     exit
@@ -141,3 +141,10 @@ fi
 
 
 echo -e "\nFINISHED SUCCESSFULLY"
+
+read -r -p "Teststart ? [J/n]: " p
+if [ "$p" == "j" ] || [ "$p" == "J" ] || [ "$p" == "" ] || [ "$p" == "y" ] || [ "$p" == "Y" ]; then
+	echo "Starte..."
+	/usr/bin/python "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/main.py"
+fi
+
