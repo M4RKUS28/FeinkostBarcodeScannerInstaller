@@ -29,6 +29,7 @@ fi
 
 sudo chmod 777 -R "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
 sudo chmod -R ugo+rwx "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
+sudo chmod -R "${SUDO_USER}:${SUDO_USER}" "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
 
 echo "Kopiere die Constants-Datei (/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py-template.txt --> /home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py)..."
 
@@ -98,15 +99,6 @@ if sudo apt install python3-PySide2.*; then
 else
   echo "    -> FAILED --> EXIT()"
   exit
-fi
-
-
-echo "Installiere Enum Bibliothek"
-if sudo apt install python-enum34; then
-    echo -e "    -> OK\n"
-else
-    echo "    -> FAILED --> EXIT()"
-    exit
 fi
 
 

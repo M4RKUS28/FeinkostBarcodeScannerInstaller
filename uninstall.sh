@@ -60,14 +60,6 @@ else
   echo "    -> FAILED --> SKIPPING()"
 fi
 
-
-echo "Entferne Enum Bibliothek"
-if sudo apt remove python-enum34; then
-    echo -e "    -> OK\n"
-else
-    echo "    -> FAILED --> SKIPPING()"
-fi
-
 #echo "Deaktiviere Feature Herunterfahren und Neustarten über Webserver..."
 
 #if text="$(sudo cat "/etc/sudoers" | grep -v "${SUDO_USER} ALL=(ALL) NOPASSWD: /sbin/reboot, /sbin/shutdown" )"; then
