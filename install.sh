@@ -16,8 +16,20 @@ if [ -d "/home/$SUDO_USER/Barcode-Scanner-Feinkost-" ]; then
   exit
 fi
 
+echo "Installiere git"
+if sudo apt install git; then
+  echo -e "    -> OK\n"
+else
+  echo "    -> FAILED --> EXIT()"
+  exit
+fi
+
+
 echo "Wechsle das Verzeichnis zu: '/home/${SUDO_USER}/'..."
 cd "/home/${SUDO_USER}/" || exit
+
+
+
 
 echo "Lade das Projekt herunter..."
 if git clone "https://github.com/Benefranko/Barcode-Scanner-Feinkost-.git"; then
@@ -132,6 +144,10 @@ else
 fi
 
 
+echo "Setup git for updater..."
+git config --global pull.rebase false
+
+
 echo -e "\nFINISHED SUCCESSFULLY"
 
 read -r -p "Teststart ? [J/n]: " p
@@ -139,4 +155,6 @@ if [ "$p" == "j" ] || [ "$p" == "J" ] || [ "$p" == "" ] || [ "$p" == "y" ] || [ 
 	echo "Starte..."
 	/usr/bin/python "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/main.py"
 fi
+
+
 
