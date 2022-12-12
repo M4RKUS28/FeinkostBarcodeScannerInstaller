@@ -41,7 +41,7 @@ fi
 
 sudo chmod 777 -R "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
 sudo chmod -R ugo+rwx "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
-sudo chmod -R "${SUDO_USER}:${SUDO_USER}" "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
+sudo chown -R "${SUDO_USER}:${SUDO_USER}" "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
 
 echo "Kopiere die Constants-Datei (/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py-template.txt --> /home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py)..."
 
