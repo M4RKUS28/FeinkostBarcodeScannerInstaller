@@ -150,15 +150,15 @@ git config --global pull.rebase false
 
 echo -e "\nFINISHED SUCCESSFULLY"
 
-read -r -p "Teststart ? [J/n]: " p
-if [ "$p" == "j" ] || [ "$p" == "J" ] || [ "$p" == "" ] || [ "$p" == "y" ] || [ "$p" == "Y" ]; then
-	echo "Starte..."
-	/usr/bin/python "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/main.py"
-	sudo chown -R "${SUDO_USER}:${SUDO_USER}" "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
-fi
 
-# Ändere auch bei erstellten Datein Rechte
+# Ändere auch bei erstellten Rechte
 sudo chown -R "${SUDO_USER}:${SUDO_USER}" "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/"
+
+read -r -p "Reboot ? [J/n]: " p
+if [ "$p" == "j" ] || [ "$p" == "J" ] || [ "$p" == "" ] || [ "$p" == "y" ] || [ "$p" == "Y" ]; then
+	echo "Reboot..."
+	sudo reboot
+fi
 
 
 
