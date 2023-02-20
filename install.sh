@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 echo "Benutzer: $SUDO_USER"
-echo " -> $SUDO_USER sollte kein Admin sein! ( Ausführen dieses Skripts mit sudo )"
+echo " -> $SUDO_USER sollte kein Admin sein!"
 for ((i=5; i>=0; i--)); do echo -ne "\rFortfahren in $i Sekunden..."; sleep 1; done
 echo -e "\r                               \n\n"
 
@@ -46,13 +46,18 @@ sudo chown -R "${SUDO_USER}:${SUDO_USER}" "/home/${SUDO_USER}/Barcode-Scanner-Fe
 echo "Kopiere die Constants-Datei (/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py-template.txt --> /home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py)..."
 
 if cp "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py-template.txt" "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py"; then
-   echo "Öffne die Starteinstellungsdatei für Änderungen..."
-   for ((i=6; i>=0; i--)); do echo -ne "\rÖffnen in $i Sekunden"; sleep 1; done
-   echo -e "\r                              \n\n"
-   nano "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py"
+    read -p "Sind Sie sicher, dass Sie fortfahren möchten? (Ja/Nein/Yes/No) " answer
+    if [[ "$answer" == "Ja" || "$answer" == "ja" || "$answer" == "yes" || "$answer" == "Yes" ]]; then
+        echo "Fahre mit Standart-Einselltungen fort..."
+    else
+        echo "Öffne die Starteinstellungsdatei für Änderungen..."
+        for ((i=6; i>=0; i--)); do echo -ne "\rÖffnen in $i Sekunden"; sleep 1; done
+        echo -e "\r                              \n\n"
+        nano "/home/${SUDO_USER}/Barcode-Scanner-Feinkost-/src/constants.py"
+    fi
 else
-  echo "    -> FAILED --> EXIT()"
-  exit
+    echo "    -> FAILED --> EXIT()"
+    exit
 fi
 
 for ((i=6; i>=0; i--)); do echo -ne "\rFahre mit dem Installieren der Abhängigkeiten in $i Sekunden fort"; sleep 1; done
