@@ -54,7 +54,7 @@ fi
 
 
 echo "Entferne Qt-Bibliotheken"
-if sudo apt remove python3-PySide2.*; then
+if sudo apt remove python3-PySide6.*; then
   echo -e "    -> OK\n"
 else
   echo "    -> FAILED --> SKIPPING()"

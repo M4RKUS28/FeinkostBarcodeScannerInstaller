@@ -111,7 +111,7 @@ fi
 
 
 echo "Installiere Qt-Bibliotheken"
-if sudo apt install python3-PySide2.*; then
+if sudo apt install python3-PySide6.*; then
   echo -e "    -> OK\n"
 else
   echo "    -> FAILED --> EXIT()"
